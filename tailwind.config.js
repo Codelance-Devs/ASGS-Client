@@ -4,9 +4,13 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx}",
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
- 
+
     // Or if using `src` directory:
     "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  plugins: [
+    // ...
+    require("@tailwindcss/aspect-ratio"),
   ],
   theme: {
     extend: {
@@ -16,10 +20,10 @@ module.exports = {
         primaryText: "#004B1A",
       },
       fontFamily: {
-        primaryFont: ['Playfair Display', 'serif'],
-        secondaryFont: ['Roboto', 'sans-serif'],
-      }
+        primaryFont: ["Playfair Display", "serif"],
+        secondaryFont: ["Roboto", "sans-serif"],
+      },
     },
   },
   plugins: [],
-}
+};
