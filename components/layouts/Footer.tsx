@@ -29,7 +29,7 @@ const Footer = () => {
 					<div className='m-auto'>
 						<h1 className=" p-4 text-white-500 mx-auto text-2xl">Whatsapp No.</h1>
 						<h2 className=" p-4 text-white-500 mx-auto text-2xl">Kanaga Velraj</h2>
-						<Link className=" p-4 text-white-500 mx-auto text-2xl">+91 8637459289</Link>
+						<Link href={`tel:${+918637459289}`} className=" p-4 text-white-500 mx-auto text-2xl">+91 8637459289</Link>
 					</div>
 
 				</div>
