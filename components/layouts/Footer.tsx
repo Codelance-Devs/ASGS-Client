@@ -15,10 +15,10 @@ const Footer = () => {
 			<footer className="bg-gray-800 text-white py-10">
 				<div className="container mx-auto m-4 flex flex-nowrap flex-row items-center">
 					<ul className="flex items-center">
-						<li><a className="p-4  mr-6 text-xl" href="#">Home</a></li>
-						<li><a className="p-4 mr-6 text-xl" href="#">Products</a></li>
-						<li><a className="p-4 mr-6 text-xl" href="#">FAQ</a></li>
-						<li><a className="p-4 mr-6 text-xl" href="#">Visit</a></li>
+						<li><Link className="p-4  mr-6 text-xl" href="#">Home</Link></li>
+						<li><Link className="p-4 mr-6 text-xl" href="#">Products</Link></li>
+						<li><Link className="p-4 mr-6 text-xl" href="#">FAQ</Link></li>
+						<li><Link className="p-4 mr-6 text-xl" href="#">Visit</Link></li>
 					</ul>
 					<div className='m-auto'>
 						<h1 className=" p-4 text-white-500 mx-auto text-2xl" >Location:</h1>
@@ -29,7 +29,7 @@ const Footer = () => {
 					<div className='m-auto'>
 						<h1 className=" p-4 text-white-500 mx-auto text-2xl">Whatsapp No.</h1>
 						<h2 className=" p-4 text-white-500 mx-auto text-2xl">Kanaga Velraj</h2>
-						<a className=" p-4 text-white-500 mx-auto text-2xl">+91 8637459289</a>
+						<Link className=" p-4 text-white-500 mx-auto text-2xl">+91 8637459289</Link>
 					</div>
 
 				</div>
