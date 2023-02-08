@@ -1,3 +1,5 @@
+import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
 export default function Products() {
@@ -145,7 +147,9 @@ export default function Products() {
               {products.map((product) => (
                 <a key={product.id} href={product.href} className=" group">
                   <div className="w-full overflow-hidden bg-gray-200 rounded-lg aspect-w-1 aspect-h-1 xl:aspect-w-7 xl:aspect-h-8">
-                    <img
+                    <Image
+                      width={100}
+                      height={100}
                       src={product.imageSrc}
                       alt={product.imageAlt}
                       className="object-cover object-center w-full h-full transition-all duration-500 ease-in-out transform group-hover:opacity-75"
@@ -160,8 +164,8 @@ export default function Products() {
                     </p>
                   </div>
                   <div>
-                    <a
-                      href="#_"
+                    <div
+                      // href="#"
                       className="relative inline-block text-lg group"
                     >
                       <span className="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-gray-900 rounded-lg group-hover:text-primaryText">
@@ -173,7 +177,7 @@ export default function Products() {
                         className="absolute bottom-0 right-0 w-full h-12 -mb-1 -mr-1 transition-all duration-200 ease-linear bg-gray-900 rounded-lg group-hover:mb-0 group-hover:mr-0"
                         data-rounded="rounded-lg"
                       ></span>
-                    </a>
+                    </div>
                   </div>
                 </a>
               ))}
