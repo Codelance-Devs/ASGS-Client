@@ -1,9 +1,5 @@
 import { LANDINGPAGE } from '@/utils/constants';
 import Image from 'next/image';
-import prop1 from '../public/assets/prop1.svg';
-import prop2 from '../public/assets/prop2.svg';
-import prop3 from '../public/assets/prop3.svg';
-import BG from '../public/assets/bg.jpg';
 
 const LandingPage = () => {
 	return (
@@ -21,7 +17,12 @@ const LandingPage = () => {
 				<div className='font-base my-[7%] flex w-fit text-center text-sm'>
 					<div className='flex max-w-[120px] flex-col items-center'>
 						<div>
-							<Image width={60} height={60} src={prop1} alt='' />
+							<Image
+								width={60}
+								height={60}
+								src={'/assets/prop1.svg'}
+								alt=''
+							/>
 						</div>
 						<p className='mt-[5%] font-secondaryFont text-primaryText'>
 							{LANDINGPAGE.SUB_TITLE_1}
@@ -29,7 +30,12 @@ const LandingPage = () => {
 					</div>
 					<div className='mx-[5%] flex max-w-[120px]  flex-col items-center'>
 						<div>
-							<Image width={60} height={60} src={prop2} alt='' />
+							<Image
+								width={60}
+								height={60}
+								src={'/assets/prop2.svg'}
+								alt=''
+							/>
 						</div>
 						<p className='mt-[5%] font-secondaryFont text-primaryText'>
 							{LANDINGPAGE.SUB_TITLE_2}
@@ -37,7 +43,12 @@ const LandingPage = () => {
 					</div>
 					<div className='flex max-w-[120px] flex-col items-center '>
 						<div>
-							<Image width={72} height={72} src={prop3} alt='' />
+							<Image
+								width={72}
+								height={72}
+								src={'/assets/prop3.svg'}
+								alt=''
+							/>
 						</div>
 						<p className='mt-[5%] font-secondaryFont text-primaryText'>
 							{LANDINGPAGE.SUB_TITLE_3}
@@ -51,9 +62,11 @@ const LandingPage = () => {
 			<section className='w-[90%] md:w-[50%]'>
 				<div className='p-[3%]'>
 					<Image
-						className='rounded-t-full border-4 border-secondaryBg'
-						src={BG}
+						className='h-auto w-full rounded-t-full border-4 border-secondaryBg'
+						src={'/assets/bg.jpg'}
 						alt=''
+						width={72}
+						height={72}
 					/>
 				</div>
 			</section>

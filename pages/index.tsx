@@ -1,6 +1,6 @@
 import PublicLayout from '@/layouts/PublicLayout';
-import LandingPage from '@/components/LandingPage';
-
+import Intro from '@/components/landing/Intro';
+import Head from 'next/head';
 
 export default function Home() {
 	return (
@@ -18,8 +18,8 @@ export default function Home() {
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 			<PublicLayout>
-        <LandingPage />
-      </PublicLayout>
+				<Intro />
+			</PublicLayout>
 		</>
 	);
 }
