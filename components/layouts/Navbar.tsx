@@ -1,60 +1,83 @@
-import React, { Fragment } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
+import { GiHamburgerMenu } from 'react-icons/gi';
 
 const Navbar = () => {
-	return (
-		<Fragment>
-			<nav className='bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded'>
-				<div className='container flex flex-wrap items-center justify-between mx-auto'>
-					<Link href='/' className='flex items-center'>
-						<span className='self-center text-4xl font-semibold whitespace-nowrap dark:text-white'>
-							ASGS Supermarket
-						</span>
-					</Link>
+	const [open, setOpen] = useState(false);
 
-					<div
-						className='hidden w-full md:block md:w-auto'
-						id='navbar-default'
-					>
-						<ul className='flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700'>
-							<li>
-								<Link
-									href='#'
-									className=' text-xl block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white'
-									aria-current='page'
-								>
-									Home
-								</Link>
-							</li>
-							<li>
-								<Link
-									href='#'
-									className=' text-xl block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent'
-								>
-									Products
-								</Link>
-							</li>
-							<li>
-								<Link
-									href='#'
-									className=' text-xl block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent'
-								>
-									FAQ
-								</Link>
-							</li>
-							<li>
-								<Link
-									href='#'
-									className=' text-xl block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent'
-								>
-									Visit
-								</Link>
-							</li>
-						</ul>
-					</div>
+	const navOptions = [
+		{
+			name: 'Home',
+			url: '/',
+		},
+		{
+			name: 'Products',
+			url: '/products',
+		},
+		{
+			name: 'About',
+			url: '/about',
+		},
+		{
+			name: 'How it works?',
+			url: '/ordering-process',
+		},
+	];
+
+	return (
+		<nav className='relative z-50 lg:border-b-primaryText lg:border-b'>
+			<div className='container mx-auto bg-primaryBg flex items-center text-primaryText lg:border-b-0 border-b-primaryText justify-between lg:justify-start px-4 py-6 z-20'>
+				<ul className='hidden lg:flex items-center gap-4 text-lg'>
+					{navOptions.map((option, index) => (
+						<li
+							key={index}
+							className='hover:underline decoration-primaryText underline-offset-2'
+						>
+							<Link href={option.url}>{option.name}</Link>
+						</li>
+					))}
+				</ul>
+				<Link href={'/'} className='w-fit lg:mx-auto'>
+					<h1 className='font-primaryFont font-semibold text-xl'>
+						<span className='px-1 py-2 rounded border bg-secondaryBg border-primaryText'>
+							ASGS
+						</span>{' '}
+						Supermarket
+					</h1>
+				</Link>
+				<div className='hidden lg:flex gap-4 items-center'>
+					<h2 className='hidden xl:block text-xs max-w-[200px]'>
+						Padavettu, Amman Koil St, Chennai, Tamil Nadu 600127
+					</h2>
+					<button className='bg-primaryText border border-secondaryBg text-secondaryBg rounded px-4 py-2 text-sm transition-all duration-300 hover:border-primaryText hover:bg-secondaryBg hover:text-primaryText'>
+						Our Products
+					</button>
 				</div>
-			</nav>
-		</Fragment>
+				<button
+					onClick={() => setOpen(!open)}
+					className={`${
+						open
+							? 'border-secondaryBg bg-primaryText text-secondaryBg'
+							: 'border-primaryText text-primaryText bg-secondaryBg'
+					} font-xl border p-3 rounded lg:hidden`}
+				>
+					<GiHamburgerMenu />
+				</button>
+			</div>
+			<div
+				className={`${
+					open ? 'top-8' : '-top-40'
+				} absolute bg-secondaryBg min-h-fit transition-all duration-500 -z-10 text-primaryText font-secondaryFont w-full pt-10 lg:hidden`}
+			>
+				<ul className='flex flex-col gap-2 px-4 font-medium py-3'>
+					{navOptions.map((option, index) => (
+						<li key={index}>
+							<Link href={option.url}>{option.name}</Link>
+						</li>
+					))}
+				</ul>
+			</div>
+		</nav>
 	);
 };
 
