@@ -1,5 +1,6 @@
 import PublicLayout from '@/layouts/PublicLayout';
-import Head from 'next/head';
+import LandingPage from '@/components/LandingPage';
+
 
 export default function Home() {
 	return (
@@ -16,7 +17,9 @@ export default function Home() {
 				/>
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
-			<PublicLayout></PublicLayout>
+			<PublicLayout>
+        <LandingPage />
+      </PublicLayout>
 		</>
 	);
 }

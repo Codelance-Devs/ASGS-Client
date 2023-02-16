@@ -6,6 +6,10 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
     "./layouts/**/*.{js,ts,jsx,tsx}",
   ],
+  plugins: [
+    // ...
+    require("@tailwindcss/aspect-ratio"),
+  ],
   theme: {
     extend: {
       colors: {
@@ -14,10 +18,10 @@ module.exports = {
         primaryText: "#004B1A",
       },
       fontFamily: {
-        primaryFont: ['Playfair Display', 'serif'],
-        secondaryFont: ['Roboto', 'sans-serif'],
-      }
+        primaryFont: ["Playfair Display", "serif"],
+        secondaryFont: ["Roboto", "sans-serif"],
+      },
     },
   },
   plugins: [],
-}
+};
