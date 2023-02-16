@@ -25,8 +25,8 @@ const Navbar = () => {
 	];
 
 	return (
-		<nav className='relative z-50 lg:border-b-primaryText lg:border-b'>
-			<div className='container mx-auto bg-primaryBg flex items-center text-primaryText lg:border-b-0 border-b-primaryText justify-between lg:justify-start px-4 py-6 z-20'>
+		<nav className='relative z-50 lg:border-b-primaryText lg:border-b bg-primaryBg w-full'>
+			<div className='container mx-auto flex items-center text-primaryText lg:border-b-0 border-b-primaryText border-b justify-between lg:justify-start px-4 py-6 z-20'>
 				<ul className='hidden lg:flex items-center gap-4 text-lg'>
 					{navOptions.map((option, index) => (
 						<li
@@ -66,7 +66,7 @@ const Navbar = () => {
 			</div>
 			<div
 				className={`${
-					open ? 'top-8' : '-top-40'
+					open ? 'top-12' : '-top-40'
 				} absolute bg-secondaryBg min-h-fit transition-all duration-500 -z-10 text-primaryText font-secondaryFont w-full pt-10 lg:hidden`}
 			>
 				<ul className='flex flex-col gap-2 px-4 font-medium py-3'>
