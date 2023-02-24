@@ -7,3 +7,9 @@ export const LANDINGPAGE = {
     SUB_TITLE_3: 'Packed with love and care',
     BUTTON: 'Order Now'
 }
+
+export const ERRORPAGE = {
+    TITLE_1: "404",
+    TITLE_2: "Page Not Found",
+    TITLE_3: "The page you are looking for doesn&apos;t exist or has been moved"
+}
