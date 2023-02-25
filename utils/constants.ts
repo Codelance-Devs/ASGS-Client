@@ -8,6 +8,13 @@ export const LANDINGPAGE = {
 	BUTTON: 'Order Now',
 };
 
+
+export const ERRORPAGE = {
+	TITLE_1: '404',
+	TITLE_2: 'Page Not Found',
+	TITLE_3: "The page you are looking for doesn't exist or has been moved",
+}
+
 export const TERMSPAGE = {
 	TITLE_1: 'Terms of Conditions',
 	SUB_TITLE_1:
