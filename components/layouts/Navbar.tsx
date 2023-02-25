@@ -22,6 +22,14 @@ const Navbar = () => {
 			name: 'How it works?',
 			url: '/ordering-process',
 		},
+		{
+			name: 'Contact',
+			url: '/contact'
+		},
+		{
+			name: 'Orders',
+			url:'/orders'
+		}
 	];
 
 	return (
