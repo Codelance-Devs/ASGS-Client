@@ -29,10 +29,10 @@ function Header() {
               </p>
             </div>
           </div>
-          <button className='h-42 group relative inline-block pt-1 text-lg'>
+          <button className='group relative inline-block pt-1 text-lg'>
             <span className='relative z-10 block cursor-pointer overflow-hidden rounded-lg border-2 border-gray-900 px-5 py-3 font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out group-hover:text-primaryText'>
               <span className='absolute inset-0 h-full w-full rounded-lg bg-gray-50 px-5 py-2'></span>
-              <span className='ease absolute left-0 -ml-2 h-42 w-42 origin-top-right -translate-x-full translate-y-12 -rotate-90 bg-secondaryBg transition-all duration-300 group-hover:-rotate-180'></span>
+              <span className='ease absolute left-0 -ml-2 h-48 w-48 origin-top-right -translate-x-full translate-y-12 -rotate-90 bg-secondaryBg transition-all duration-300 group-hover:-rotate-180'></span>
               <span className='relative'>
                 Checkout
               </span>
