@@ -38,7 +38,7 @@ const Footer = () => {
 	];
 
 	return (
-		<footer className='mt-20 bg-primaryBg py-8 px-4'>
+		<footer className='mt-20 bg-primaryBg border-t border-black py-8 px-4'>
 			<div className='container mx-auto grid grid-cols-1 gap-8 text-primaryText md:grid-cols-3'>
 				<div>
 					<Link href={'/'} className='w-fit lg:mx-auto'>
