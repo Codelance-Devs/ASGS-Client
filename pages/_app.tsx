@@ -11,9 +11,10 @@ export default function App({ Component, pageProps }: AppProps) {
 	return (
 		<AppContext.Provider value={state}>
 			<DispatchContext.Provider value={dispatch}>
-      <PublicLayout>
-				<Component {...pageProps} />
-        </PublicLayout>
+				<PublicLayout>
+					<Component {...pageProps} />
+				</PublicLayout>
 			</DispatchContext.Provider>
 		</AppContext.Provider>
 	);
+}
