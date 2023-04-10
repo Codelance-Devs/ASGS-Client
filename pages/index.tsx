@@ -1,4 +1,3 @@
-import PublicLayout from '@/layouts/PublicLayout';
 import Intro from '@/components/landing/Intro';
 import Head from 'next/head';
 
@@ -17,9 +16,7 @@ export default function Home() {
 				/>
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
-			<PublicLayout>
-				<Intro />
-			</PublicLayout>
+			<Intro />
 		</>
 	);
 }
