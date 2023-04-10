@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import PublicLayout from '@/layouts/PublicLayout';
 import { useState, useContext } from 'react';
 import DispatchContext from '@/context/DispatchContext';
 import AppContext from '@/context/AppContext';
@@ -15,8 +14,6 @@ export default function Products({ prod }: Props) {
 	const handleAddToCart = (product: ProductType) => {
 		dispatch({ type: 'ADD_TO_CART', payload: product });
 	};
-
-	console.log(cart);
 
 	const [categories, setCategories] = useState([
 		'Bakery',
@@ -109,56 +106,54 @@ export default function Products({ prod }: Props) {
 	];
 
 	return (
-		<PublicLayout>
-			<div className='mt-[10%] items-center justify-center'>
-				<div className='xl:px-22 container mx-auto px-2 md:px-12'>
-					<div className='text-center text-primaryText'>
-						<div className='bg-sec block rounded-lg bg-secondaryBg px-2 py-12 shadow-lg md:py-16 md:px-12'>
-							<h1 className='mb-12 text-5xl font-bold tracking-tight md:text-6xl xl:text-7xl'>
-								Our Products <br />
-								<span className='text-xl font-normal tracking-normal'>
-									Select from a Wide range of products
-									available in out store.
-								</span>
-							</h1>
-						</div>
+		<div className='mt-[10%] items-center justify-center'>
+			<div className='xl:px-22 container mx-auto px-2 md:px-12'>
+				<div className='text-center text-primaryText'>
+					<div className='bg-sec block rounded-lg bg-secondaryBg px-2 py-12 shadow-lg md:py-16 md:px-12'>
+						<h1 className='mb-12 text-5xl font-bold tracking-tight md:text-6xl xl:text-7xl'>
+							Our Products <br />
+							<span className='text-xl font-normal tracking-normal'>
+								Select from a Wide range of products
+								available in out store.
+							</span>
+						</h1>
 					</div>
 				</div>
-				<div className='flex items-center justify-center'>
-					<span className='ml-10 font-secondaryFont text-primaryText'>
-						Shop by category:
-					</span>
-					<div className='z-20 p-10'>
-						<div className='dropdown relative inline-block'>
-							<button className='inline-flex items-center rounded bg-secondaryBg px-4 py-2 font-semibold text-gray-700'>
-								<span className='mr-1'>Choose Categories</span>
-								<svg
-									className='h-4 w-4 fill-current'
-									xmlns='http://www.w3.org/2000/svg'
-									viewBox='0 0 20 20'
-								>
-									<path d='M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z' />{' '}
-								</svg>
-							</button>
-							<ul className='dropdown-menu absolute hidden pt-1 text-primaryText'>
-								{categories.map((word, index) => (
-									<li className='' key={index}>
-										<a
-											className='whitespace-no-wrap block rounded-t bg-secondaryBg px-4 py-2 hover:bg-green-200'
-											href='#'
-										>
-											{word}
-										</a>
-									</li>
-								))}
-							</ul>
-						</div>
+			</div>
+			<div className='flex items-center justify-center'>
+				<span className='ml-10 font-secondaryFont text-primaryText'>
+					Shop by category:
+				</span>
+				<div className='z-20 p-10'>
+					<div className='dropdown relative inline-block'>
+						<button className='inline-flex items-center rounded bg-secondaryBg px-4 py-2 font-semibold text-gray-700'>
+							<span className='mr-1'>Choose Categories</span>
+							<svg
+								className='h-4 w-4 fill-current'
+								xmlns='http://www.w3.org/2000/svg'
+								viewBox='0 0 20 20'
+							>
+								<path d='M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z' />{' '}
+							</svg>
+						</button>
+						<ul className='dropdown-menu absolute hidden pt-1 text-primaryText'>
+							{categories.map((word, index) => (
+								<li className='' key={index}>
+									<a
+										className='whitespace-no-wrap block rounded-t bg-secondaryBg px-4 py-2 hover:bg-green-200'
+										href='#'
+									>
+										{word}
+									</a>
+								</li>
+							))}
+						</ul>
 					</div>
 				</div>
-				<div className='bg-white'>
-					<div className='mx-auto max-w-2xl px-4 py-16 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8'>
-						<h2 className='sr-only'>Products</h2>
-
+			</div>
+			<div className='bg-white'>
+				<div className='mx-auto max-w-2xl px-4 py-16 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8'>
+					<h2 className='sr-only'>Products</h2>
 						<div className='grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8'>
 							{products.map((product) => (
 								<div
@@ -197,18 +192,18 @@ export default function Products({ prod }: Props) {
 													Add to Cart
 												</span>
 											</span>
-											<span
-												className='absolute bottom-0 right-0 -mb-1 -mr-1 h-12 w-full rounded-lg bg-gray-900 transition-all duration-200 ease-linear group-hover:mb-0 group-hover:mr-0'
-												data-rounded='rounded-lg'
-											></span>
-										</div>
+										</span>
+										<span
+											className='absolute bottom-0 right-0 -mb-1 -mr-1 h-12 w-full rounded-lg bg-gray-900 transition-all duration-200 ease-linear group-hover:mb-0 group-hover:mr-0'
+											data-rounded='rounded-lg'
+										></span>
 									</div>
 								</div>
-							))}
-						</div>
+							</div>
+						))}
 					</div>
 				</div>
 			</div>
-		</PublicLayout>
+		</div>
 	);
 }
