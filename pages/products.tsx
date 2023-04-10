@@ -1,7 +1,20 @@
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import DispatchContext from '@/context/DispatchContext';
+import AppContext from '@/context/AppContext';
 
-export default function Products() {
+interface Props {
+	prod: [ProductType];
+}
+
+export default function Products({ prod }: Props) {
+	const { cart } = useContext(AppContext);
+	const dispatch = useContext<DispatchContextType>(DispatchContext);
+
+	const handleAddToCart = (product: ProductType) => {
+		dispatch({ type: 'ADD_TO_CART', payload: product });
+	};
+
 	const [categories, setCategories] = useState([
 		'Bakery',
 		'Baking',
@@ -141,38 +154,43 @@ export default function Products() {
 			<div className='bg-white'>
 				<div className='mx-auto max-w-2xl px-4 py-16 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8'>
 					<h2 className='sr-only'>Products</h2>
-
-					<div className='grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8'>
-						{products.map((product) => (
-							<div
-								key={product.id}
-								// href={product.href}
-								className=''
-							>
-								<div className='aspect-w-1 aspect-h-1 xl:aspect-w-7 xl:aspect-h-8 w-full overflow-hidden rounded-lg bg-gray-200'>
-									<Image
-										width={100}
-										height={100}
-										src={product.imageSrc}
-										alt={product.imageAlt}
-										className='h-full w-full transform object-cover object-center transition-all duration-500 ease-in-out group-hover:opacity-75'
-									/>
-								</div>
-								<div className=''>
-									<h3 className='mt-4 text-xl text-gray-700'>
-										{product.name}
-									</h3>
-									<p className='mt-1 text-lg font-medium text-gray-900'>
-										{product.price}
-									</p>
-								</div>
-								<div>
-									<div className='group relative inline-block pt-1 text-lg'>
-										<span className='relative z-10 block cursor-pointer overflow-hidden rounded-lg border-2 border-gray-900 px-5 py-3 font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out group-hover:text-primaryText'>
-											<span className='absolute inset-0 h-full w-full rounded-lg bg-gray-50 px-5 py-3'></span>
-											<span className='ease absolute left-0 -ml-2 h-48 w-48 origin-top-right -translate-x-full translate-y-12 -rotate-90 bg-secondaryBg transition-all duration-300 group-hover:-rotate-180'></span>
-											<span className='relative'>
-												Add to Cart
+						<div className='grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8'>
+							{products.map((product) => (
+								<div
+									key={product.id}
+									// href={product.href}
+									className=''
+								>
+									<div className='aspect-w-1 aspect-h-1 xl:aspect-w-7 xl:aspect-h-8 w-full overflow-hidden rounded-lg bg-gray-200'>
+										<Image
+											width={100}
+											height={100}
+											src={product.imageSrc}
+											alt={product.imageAlt}
+											className='h-full w-full transform object-cover object-center transition-all duration-500 ease-in-out group-hover:opacity-75'
+										/>
+									</div>
+									<div className=''>
+										<h3 className='mt-4 text-xl text-gray-700'>
+											{product.name}
+										</h3>
+										<p className='mt-1 text-lg font-medium text-gray-900'>
+											{product.price}
+										</p>
+									</div>
+									<div>
+										<div
+											className='group relative inline-block pt-1 text-lg'
+											onClick={() =>
+												handleAddToCart(product)
+											}
+										>
+											<span className='relative z-10 block cursor-pointer overflow-hidden rounded-lg border-2 border-gray-900 px-5 py-3 font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out group-hover:text-primaryText'>
+												<button className='absolute inset-0 h-full w-full rounded-lg bg-gray-50 px-5 py-3'></button>
+												<span className='ease absolute left-0 -ml-2 h-48 w-48 origin-top-right -translate-x-full translate-y-12 -rotate-90 bg-secondaryBg transition-all duration-300 group-hover:-rotate-180'></span>
+												<span className='relative'>
+													Add to Cart
+												</span>
 											</span>
 										</span>
 										<span
