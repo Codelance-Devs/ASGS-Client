@@ -22,6 +22,7 @@ const LandingPage = () => {
 								height={60}
 								src={'/assets/prop1.svg'}
 								alt=''
+								unoptimized={true}
 							/>
 						</div>
 						<p className='mt-[5%] font-secondaryFont text-primaryText'>
@@ -55,7 +56,7 @@ const LandingPage = () => {
 						</p>
 					</div>
 				</div>
-				<button className='w-fit rounded-md border border-primaryText bg-secondaryBg px-[8%] py-[3%] font-secondaryFont text-primaryText'>
+				<button className='w-fit rounded-md border border-primaryText bg-secondaryBg px-[8%] py-[3%] font-secondaryFont text-primaryText transition-all duration-300 hover:border-secondaryBg hover:bg-primaryText hover:text-secondaryBg'>
 					{LANDINGPAGE.BUTTON}
 				</button>
 			</section>
