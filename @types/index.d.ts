@@ -3,12 +3,10 @@ interface AppState {
 }
 
 interface ProductType {
-	id: number;
+	id: string;
 	name: string;
-	href: string;
-	price: string;
+	price: number;
 	imageSrc: string;
-	imageAlt: string;
 	quantity?: number;
 }
 

@@ -21,8 +21,8 @@ const LandingPage = () => {
 								width={60}
 								height={60}
 								src={'/assets/prop1.svg'}
-								alt=''
-								unoptimized={true}
+								alt='ASGS Supermarket'
+								unoptimized
 							/>
 						</div>
 						<p className='mt-[5%] font-secondaryFont text-primaryText'>
@@ -35,7 +35,8 @@ const LandingPage = () => {
 								width={60}
 								height={60}
 								src={'/assets/prop2.svg'}
-								alt=''
+								alt='ASGS Supermarket'
+								unoptimized
 							/>
 						</div>
 						<p className='mt-[5%] font-secondaryFont text-primaryText'>
@@ -48,7 +49,7 @@ const LandingPage = () => {
 								width={72}
 								height={72}
 								src={'/assets/prop3.svg'}
-								alt=''
+								alt='ASGS Supermarket'
 							/>
 						</div>
 						<p className='mt-[5%] font-secondaryFont text-primaryText'>
@@ -68,6 +69,7 @@ const LandingPage = () => {
 						alt=''
 						width={72}
 						height={72}
+						unoptimized
 					/>
 				</div>
 			</section>
