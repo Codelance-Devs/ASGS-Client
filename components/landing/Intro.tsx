@@ -5,7 +5,7 @@ const LandingPage = () => {
 	return (
 		<main className='mx-auto flex min-h-screen w-full flex-col items-center justify-start md:w-[90%] md:flex-row lg:w-[85%] xl:w-[80%] 2xl:w-[70%]'>
 			<section className='flex w-[80%] flex-col items-center text-center md:w-[50%] md:items-start md:text-left'>
-				<h1 className='mt-[5%] font-primaryFont text-[9vw] text-primaryText md:mt-[0%] md:text-[5.5vw]'>
+				<h1 className='mt-[5%] font-primaryFont text-[9vw] text-primaryText md:mt-[0%] md:text-[4.2vw]'>
 					<p>
 						{LANDINGPAGE.TITLE_P1}
 						<span className='ml-[1%] font-secondaryFont'>

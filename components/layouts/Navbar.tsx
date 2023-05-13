@@ -32,8 +32,8 @@ const Navbar = () => {
 	];
 
 	return (
-		<nav className='relative z-[999] w-full bg-primaryBg border-b-primaryText border-b'>
-			<div className='container z-[50] mx-auto flex items-center justify-between border-b-primaryText px-4 py-6 text-primaryText lg:justify-start'>
+		<nav className='relative z-[9999] w-full bg-primaryBg border-b-primaryText border-b'>
+			<div className='container z-50 mx-auto flex items-center justify-between border-b-primaryText px-4 py-6 text-primaryText lg:justify-start'>
 				<ul className='hidden items-center gap-4 text-lg lg:flex'>
 					{navOptions.map((option, index) => (
 						<li
