@@ -2,9 +2,9 @@ export const LANDINGPAGE = {
 	TITLE_P1: 'Healthy',
 	TITLE_P2: 'Groceries,',
 	TITLE_P3: 'Happy You',
-	SUB_TITLE_1: 'Healthy food cooked on request',
-	SUB_TITLE_2: 'Plant based food no added flavor',
-	SUB_TITLE_3: 'Packed with love and care',
+	SUB_TITLE_1: 'Ready to cook food and groceries',
+	SUB_TITLE_2: 'Fresh fruits and vegetables',
+	SUB_TITLE_3: 'Packaged items available on demand',
 	BUTTON: 'Order Now',
 };
 
