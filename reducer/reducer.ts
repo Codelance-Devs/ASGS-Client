@@ -19,6 +19,7 @@ const reducer = (state: AppState, action: AppActions) => {
 				cartItem = { ...action.payload, quantity: 1 };
 			}
 			const cart = [...state.cart, cartItem];
+			localStorage.setItem('ASGS_CART', JSON.stringify(cart));
 			return { ...state, cart };
 		}
 		// When snackbar is close
@@ -39,6 +40,7 @@ const reducer = (state: AppState, action: AppActions) => {
 			} else {
 				cart = cart.filter((item) => item.id !== action.payload.id);
 			}
+			localStorage.setItem('ASGS_CART', JSON.stringify(cart));
 			return { ...state, cart };
 		}
 		default: {

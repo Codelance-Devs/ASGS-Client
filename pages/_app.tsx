@@ -7,7 +7,11 @@ import { useReducer } from 'react';
 import PublicLayout from '@/layouts/PublicLayout';
 
 export default function App({ Component, pageProps }: AppProps) {
-	const [state, dispatch] = useReducer(reducer, { cart: [] });
+	let cart = [];
+	if (typeof window !== 'undefined') {
+		cart = JSON.parse(localStorage.getItem('ASGS_CART')!) ?? [];
+	}
+	const [state, dispatch] = useReducer(reducer, { cart });
 	return (
 		<AppContext.Provider value={state}>
 			<DispatchContext.Provider value={dispatch}>
