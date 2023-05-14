@@ -1,12 +1,21 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 import Image from 'next/image';
+import DispatchContext from '@/context/DispatchContext';
 
 interface Props {
 	product: ProductType;
 }
 
 function Card({ product }: Props) {
-	const [count, setCount] = useState(0);
+	const dispatch = useContext(DispatchContext);
+
+	const handleIncrementQuantity = () => {
+		dispatch({ type: 'ADD_TO_CART', payload: product });
+	};
+
+	const handleDecrementQuantity = () => {
+		dispatch({ type: 'REMOVE_FROM_CART', payload: product });
+	};
 
 	return (
 		<div className='my-5 mx-auto h-max w-[330px] rounded-lg border border-neutral-200 bg-primaryBg/60 px-5 shadow-md shadow-neutral-300'>
@@ -28,7 +37,7 @@ function Card({ product }: Props) {
 			</div>
 			<div className='my-5 flex w-full justify-center'>
 				<button
-					onClick={() => setCount(count - 1)}
+					onClick={handleDecrementQuantity}
 					className='rounded-md bg-red-400 p-2 shadow-md'
 				>
 					<svg
@@ -47,10 +56,10 @@ function Card({ product }: Props) {
 					</svg>
 				</button>
 				<span className='mx-5 rounded-md bg-white py-2 px-4 shadow-md'>
-					{count}
+					{product.quantity}
 				</span>
 				<button
-					onClick={() => setCount(count + 1)}
+					onClick={handleIncrementQuantity}
 					className='rounded-md bg-secondaryBg p-2 shadow-md'
 				>
 					<svg

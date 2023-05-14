@@ -1,4 +1,3 @@
-import AppContext from '@/context/AppContext';
 import DispatchContext from '@/context/DispatchContext';
 import Image from 'next/image';
 import React, { useContext } from 'react';
@@ -8,10 +7,9 @@ interface Props {
 }
 
 const ProductCard: React.FC<Props> = ({ product }) => {
-	const { cart } = useContext(AppContext);
 	const dispatch = useContext<DispatchContextType>(DispatchContext);
 
-	const handleAddToCart = (product: ProductType) => {
+	const handleAddToCart = () => {
 		dispatch({ type: 'ADD_TO_CART', payload: product });
 	};
 
@@ -39,7 +37,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
 			<div>
 				<div
 					className='group relative inline-block pt-1 text-lg'
-					onClick={() => handleAddToCart(product)}
+					onClick={handleAddToCart}
 				>
 					<span className='relative z-10 block cursor-pointer overflow-hidden rounded-lg border-2 border-gray-900 px-5 py-3 font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out group-hover:text-primaryText'>
 						<button className='absolute inset-0 h-full w-full rounded-lg bg-gray-50 px-5 py-3'></button>

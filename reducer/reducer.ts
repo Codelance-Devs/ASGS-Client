@@ -8,19 +8,17 @@ import React from 'react';
 const reducer = (state: AppState, action: AppActions) => {
 	switch (action.type) {
 		case 'ADD_TO_CART': {
-			const exists = state.cart.find(
+			const exists = state.cart.findIndex(
 				(item) => item.id === action.payload.id
 			);
-			let cartItem: ProductType;
-			if (exists) {
-				exists.quantity = exists.quantity!++;
-				cartItem = exists;
+			if (exists !== -1) {
+				state.cart[exists].quantity! += 1;
 			} else {
-				cartItem = { ...action.payload, quantity: 1 };
+				const cartItem = { ...action.payload, quantity: 1 };
+				state.cart.push(cartItem);
 			}
-			const cart = [...state.cart, cartItem];
-			localStorage.setItem('ASGS_CART', JSON.stringify(cart));
-			return { ...state, cart };
+			localStorage.setItem('ASGS_CART', JSON.stringify(state.cart));
+			return { ...state };
 		}
 		case 'REMOVE_FROM_CART': {
 			const exists = state.cart.find(
