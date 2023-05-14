@@ -10,7 +10,7 @@ interface ProductType {
 	quantity?: number;
 }
 
-type CartActionTypes = 'ADD_TO_CART' | 'REMOVE_FROM_CART';
+type CartActionTypes = 'ADD_TO_CART' | 'REMOVE_FROM_CART' | 'CLEAR_CART';
 
 interface CartAction {
 	type: CartActionTypes;

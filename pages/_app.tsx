@@ -7,7 +7,7 @@ import { useReducer } from 'react';
 import PublicLayout from '@/layouts/PublicLayout';
 
 export default function App({ Component, pageProps }: AppProps) {
-	let cart = [];
+	let cart: ProductType[] = [];
 	if (typeof window !== 'undefined') {
 		cart = JSON.parse(localStorage.getItem('ASGS_CART')!) ?? [];
 	}

@@ -22,8 +22,6 @@ const reducer = (state: AppState, action: AppActions) => {
 			localStorage.setItem('ASGS_CART', JSON.stringify(cart));
 			return { ...state, cart };
 		}
-		// When snackbar is close
-		//  - set open to false
 		case 'REMOVE_FROM_CART': {
 			const exists = state.cart.find(
 				(item) => item.id === action.payload.id
@@ -41,6 +39,11 @@ const reducer = (state: AppState, action: AppActions) => {
 				cart = cart.filter((item) => item.id !== action.payload.id);
 			}
 			localStorage.setItem('ASGS_CART', JSON.stringify(cart));
+			return { ...state, cart };
+		}
+		case 'CLEAR_CART': {
+			const cart: ProductType[] = [];
+			localStorage.removeItem('ASGS_CART');
 			return { ...state, cart };
 		}
 		default: {
