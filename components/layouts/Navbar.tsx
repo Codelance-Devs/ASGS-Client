@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { GiHamburgerMenu } from 'react-icons/gi';
+import AppContext from '@/context/AppContext';
 
 const Navbar = () => {
 	const [open, setOpen] = useState(false);
 	const [activeLink, setActiveLink] = useState('');
 	const router = useRouter();
+	const { cart } = useContext(AppContext);
 
 	useEffect(() => {
 		setActiveLink(router.pathname);
@@ -67,10 +69,16 @@ const Navbar = () => {
 					<h2 className='hidden max-w-[200px] text-xs xl:block'>
 						Padavettu, Amman Koil St, Chennai, Tamil Nadu 600127
 					</h2>
-					<button className='rounded border border-secondaryBg bg-primaryText px-4 py-2.5 text-sm text-secondaryBg font-semibold transition-all duration-300 hover:border-primaryText hover:bg-secondaryBg hover:text-primaryText'>
+					<Link
+						href='/products'
+						className='rounded border border-secondaryBg bg-primaryText px-4 py-2.5 text-sm text-secondaryBg font-semibold transition-all duration-300 hover:border-primaryText hover:bg-secondaryBg hover:text-primaryText'
+					>
 						Our Products
-					</button>
-					<button className='flex justify-between items-center rounded border border-secondaryBg bg-primaryText px-4 py-2 text-sm text-secondaryBg transition-all duration-300 hover:border-primaryText hover:bg-secondaryBg hover:text-primaryText'>
+					</Link>
+					<Link
+						href={'/cart'}
+						className='flex justify-between items-center rounded border border-secondaryBg bg-primaryText px-4 py-2 text-sm text-secondaryBg transition-all duration-300 hover:border-primaryText hover:bg-secondaryBg hover:text-primaryText'
+					>
 						<span className='mr-2'>
 							<svg
 								xmlns='http://www.w3.org/2000/svg'
@@ -87,8 +95,10 @@ const Navbar = () => {
 								/>
 							</svg>
 						</span>
-						<span className='font-semibold'>Cart {0}</span>
-					</button>
+						<span className='font-semibold'>
+							Cart ({cart.length})
+						</span>
+					</Link>
 				</div>
 				<div className='flex'>
 					<button className='lg:hidden flex justify-between items-center rounded border border-secondaryBg bg-primaryText p-2 text-sm text-secondaryBg transition-all duration-300 hover:border-primaryText hover:bg-secondaryBg hover:text-primaryText mr-2'>
