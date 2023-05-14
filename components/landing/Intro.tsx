@@ -1,5 +1,6 @@
 import { LANDINGPAGE } from '@/utils/constants';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const LandingPage = () => {
 	return (
@@ -57,9 +58,12 @@ const LandingPage = () => {
 						</p>
 					</div>
 				</div>
-				<button className='w-fit rounded-md border border-primaryText bg-secondaryBg px-[8%] py-[3%] font-secondaryFont text-primaryText transition-all duration-300 hover:border-secondaryBg hover:bg-primaryText hover:text-secondaryBg'>
+				<Link
+					href='/products'
+					className='w-fit rounded-md border border-primaryText bg-secondaryBg px-[8%] py-[3%] font-secondaryFont text-primaryText transition-all duration-300 hover:border-secondaryBg hover:bg-primaryText hover:text-secondaryBg'
+				>
 					{LANDINGPAGE.BUTTON}
-				</button>
+				</Link>
 			</section>
 			<section className='w-[90%] md:w-[50%]'>
 				<div className='p-[3%]'>
