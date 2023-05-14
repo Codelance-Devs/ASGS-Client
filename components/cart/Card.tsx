@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import Image from 'next/image';
-import bg from '../../public/assets/bg.jpg';
 
 interface Props {
 	product: ProductType;
@@ -15,7 +14,7 @@ function Card({ product }: Props) {
 				<Image
 					className='drop-shadow-neutral-400 max-h-[200px] w-full rounded-lg object-cover drop-shadow-lg'
 					src={product.imageSrc}
-					alt={product.imageAlt}
+					alt={product.name}
 					height={300}
 					width={300}
 				/>

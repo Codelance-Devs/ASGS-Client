@@ -25,8 +25,13 @@ const CartPage = () => {
 						) : (
 							<span>
 								Uh oh! Your cart is empty! View{' '}
-								<Link href='/products'>Products</Link> to shop
-								now.
+								<Link
+									href='/products'
+									className='underline underline-offset-4 hover:text-primaryText'
+								>
+									Products
+								</Link>{' '}
+								to shop now.
 							</span>
 						)}
 					</div>
