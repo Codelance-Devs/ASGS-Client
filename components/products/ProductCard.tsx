@@ -13,7 +13,7 @@ interface AddToCartButtonProps {
 }
 
 interface IncrementDecrementButtonProps {
-	product: ProductType;
+	quantity: number;
 	handleDecrementQuantity: () => void;
 	handleIncrementQuantity: () => void;
 }
@@ -40,7 +40,7 @@ const AddToCartButton: React.FC<AddToCartButtonProps> = ({
 };
 
 const IncrementDecrementButton: React.FC<IncrementDecrementButtonProps> = ({
-	product,
+	quantity,
 	handleDecrementQuantity,
 	handleIncrementQuantity,
 }) => {
@@ -53,7 +53,7 @@ const IncrementDecrementButton: React.FC<IncrementDecrementButtonProps> = ({
 				<GrSubtract />
 			</button>
 			<span className='mx-5 rounded-md bg-white py-2 px-4 shadow-md'>
-				{product.quantity}
+				{quantity}
 			</span>
 			<button
 				onClick={handleIncrementQuantity}
@@ -107,7 +107,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 					<AddToCartButton handleAddToCart={handleAddToCart} />
 				) : (
 					<IncrementDecrementButton
-						product={cart.find((item) => item.id === product.id)!}
+						quantity={
+							cart.find((item) => item.id === product.id)
+								?.quantity!
+						}
 						handleDecrementQuantity={handleDecrementQuantity}
 						handleIncrementQuantity={handleIncrementQuantity}
 					/>

@@ -23,7 +23,9 @@ const reducer = (state: AppState, action: AppActions) => {
 				(item) => item.id === action.payload.id
 			);
 			if (exists > -1) {
-				state.cart[exists].quantity! += 1;
+				console.log(state.cart[exists].quantity!);
+				++state.cart[exists].quantity!;
+				console.log(state.cart[exists].quantity!);
 			}
 			localStorage.setItem('ASGS_CART', JSON.stringify(state.cart));
 			return { ...state };
