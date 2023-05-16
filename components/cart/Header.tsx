@@ -2,6 +2,8 @@ import React, { useContext, useMemo } from 'react';
 import DispatchContext from '@/context/DispatchContext';
 import AppContext from '@/context/AppContext';
 
+const CHECKOUT_CONTACT_NUM = '917200249230';
+
 function Header() {
 	const { cart } = useContext(AppContext);
 	const dispatch = useContext(DispatchContext);
@@ -27,6 +29,27 @@ function Header() {
 
 	const handleClearCart = () => {
 		dispatch({ type: 'CLEAR_CART', payload: {} as ProductType });
+	};
+
+	const handleCheckoutCart = () => {
+		const CART_ITEMS = cart
+			.map(
+				(item, index) =>
+					`${index + 1}. ${item.name} - ${item.quantity} nos * ₹${
+						item.price
+					} = ₹${item.quantity! * item.price}`
+			)
+			.join('\n');
+		const MESSAGE = encodeURIComponent(
+			`Hey there! I'm looking to order the following items:\n\n${CART_ITEMS}\n\nSub Total: ₹${totalCost}\nTotal Number of Items (items * quantity each): ${itemCount}`
+		);
+
+		if (typeof window !== 'undefined') {
+			window.open(
+				`https://wa.me/${CHECKOUT_CONTACT_NUM}?text=${MESSAGE}`,
+				'_blank'
+			);
+		}
 	};
 
 	return (
@@ -55,7 +78,8 @@ function Header() {
 					<div className='flex items-center gap-4'>
 						<button
 							className='group relative inline-block pt-1 text-lg'
-							disabled={cart.length > 0}
+							onClick={handleCheckoutCart}
+							disabled={cart.length === 0}
 						>
 							<span className='relative z-[1] block cursor-pointer overflow-hidden rounded-lg border-2 border-gray-900 px-5 py-3 font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out group-hover:text-primaryText'>
 								<span className='absolute inset-0 h-full w-full rounded-lg bg-gray-50 px-5 py-2'></span>
