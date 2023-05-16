@@ -3,16 +3,18 @@ interface AppState {
 }
 
 interface ProductType {
-	id: number;
+	id: string;
 	name: string;
-	href: string;
-	price: string;
+	price: number;
 	imageSrc: string;
-	imageAlt: string;
 	quantity?: number;
 }
 
-type CartActionTypes = 'ADD_TO_CART' | 'REMOVE_FROM_CART';
+type CartActionTypes =
+	| 'ADD_TO_CART'
+	| 'CLEAR_CART'
+	| 'INCREMENT_ITEM_QUANTITY'
+	| 'DECREMENT_ITEM_QUANTITY';
 
 interface CartAction {
 	type: CartActionTypes;

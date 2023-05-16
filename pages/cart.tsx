@@ -1,83 +1,44 @@
 import Header from '@/components/cart/Header';
 import Card from '@/components/cart/Card';
 import { useContext, useState, useEffect } from 'react';
+import AppContext from '@/context/AppContext';
+import Link from 'next/link';
+import Head from 'next/head';
 
-interface Props {
-	product: [ProductType];
-}
-
-const products = [
-	{
-		id: 1,
-		name: 'Sabji',
-		href: '#',
-		price: '$48',
-		imageSrc:
-			'https://assets.website-files.com/62b14afe3c1bf49d35ec8beb/62ba7dd88326f56afb8fc51a_menu-12.jpg',
-		imageAlt: 'Veggies',
-	},
-	{
-		id: 2,
-		name: 'Sabji',
-		href: '#',
-		price: '$48',
-		imageSrc:
-			'https://assets.website-files.com/62b14afe3c1bf49d35ec8beb/62ba7dd88326f56afb8fc51a_menu-12.jpg',
-		imageAlt: 'Veggies',
-	},
-	{
-		id: 3,
-		name: 'Sabji',
-		href: '#',
-		price: '$48',
-		imageSrc:
-			'https://assets.website-files.com/62b14afe3c1bf49d35ec8beb/62ba7dd88326f56afb8fc51a_menu-12.jpg',
-		imageAlt: 'Veggies',
-	},
-	{
-		id: 4,
-		name: 'Sabji',
-		href: '#',
-		price: '$48',
-		imageSrc:
-			'https://assets.website-files.com/62b14afe3c1bf49d35ec8beb/62ba7dd88326f56afb8fc51a_menu-12.jpg',
-		imageAlt: 'Veggies',
-	},
-	{
-		id: 5,
-		name: 'Sabji',
-		href: '#',
-		price: '$48',
-		imageSrc:
-			'https://assets.website-files.com/62b14afe3c1bf49d35ec8beb/62ba7dd88326f56afb8fc51a_menu-12.jpg',
-		imageAlt: 'Veggies',
-	},
-	{
-		id: 6,
-		name: 'Sabji',
-		href: '#',
-		price: '$48',
-		imageSrc:
-			'https://assets.website-files.com/62b14afe3c1bf49d35ec8beb/62ba7dd88326f56afb8fc51a_menu-12.jpg',
-		imageAlt: 'Veggies',
-	},
-];
-
-const cart = () => {
+const CartPage = () => {
+	const { cart } = useContext(AppContext);
 	return (
-		<div>
-			<div className='container mx-auto'>
-				<div>
-					<Header />
-				</div>
-				<div className='grid-rows-auto m-10 mx-auto grid w-full grid-cols-1 gap-8 px-10 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4'>
-					{products.map((product) => (
-						<Card key={product.id} product={product} />
-					))}
+		<>
+			<Head>
+				<title>Cart | ASGS</title>
+			</Head>
+			<div>
+				<div className='container mx-auto'>
+					<div>
+						<Header />
+					</div>
+					<div className='grid-rows-auto m-10 mx-auto grid w-full grid-cols-1 gap-8 px-10 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4'>
+						{cart.length > 0 ? (
+							cart.map((product) => (
+								<Card key={product.id} product={product} />
+							))
+						) : (
+							<span>
+								Uh oh! Your cart is empty! View{' '}
+								<Link
+									href='/products'
+									className='underline underline-offset-4 hover:text-primaryText'
+								>
+									Products
+								</Link>{' '}
+								to shop now.
+							</span>
+						)}
+					</div>
 				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 
-export default cart;
+export default CartPage;
