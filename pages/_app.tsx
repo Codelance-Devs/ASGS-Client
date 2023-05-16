@@ -12,6 +12,7 @@ export default function App({ Component, pageProps }: AppProps) {
 		cart = JSON.parse(localStorage.getItem('ASGS_CART')!) ?? [];
 	}
 	const [state, dispatch] = useReducer(reducer, { cart });
+	console.log(state);
 	return (
 		<AppContext.Provider value={state}>
 			<DispatchContext.Provider value={dispatch}>

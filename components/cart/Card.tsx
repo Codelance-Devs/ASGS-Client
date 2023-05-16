@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import Image from 'next/image';
 import DispatchContext from '@/context/DispatchContext';
+import { GrSubtract, GrAdd } from 'react-icons/gr';
 
 interface Props {
 	product: ProductType;
@@ -10,11 +11,11 @@ function Card({ product }: Props) {
 	const dispatch = useContext(DispatchContext);
 
 	const handleIncrementQuantity = () => {
-		dispatch({ type: 'ADD_TO_CART', payload: product });
+		dispatch({ type: 'INCREMENT_ITEM_QUANTITY', payload: product });
 	};
 
 	const handleDecrementQuantity = () => {
-		dispatch({ type: 'REMOVE_FROM_CART', payload: product });
+		dispatch({ type: 'DECREMENT_ITEM_QUANTITY', payload: product });
 	};
 
 	return (
@@ -40,20 +41,7 @@ function Card({ product }: Props) {
 					onClick={handleDecrementQuantity}
 					className='rounded-md bg-red-400 p-2 shadow-md'
 				>
-					<svg
-						xmlns='http://www.w3.org/2000/svg'
-						fill='none'
-						viewBox='0 0 24 24'
-						stroke-width='1.5'
-						stroke='currentColor'
-						className='h-6 w-6'
-					>
-						<path
-							strokeLinecap='round'
-							strokeLinejoin='round'
-							d='M18 12H6'
-						/>
-					</svg>
+					<GrSubtract />
 				</button>
 				<span className='mx-5 rounded-md bg-white py-2 px-4 shadow-md'>
 					{product.quantity}
@@ -62,20 +50,7 @@ function Card({ product }: Props) {
 					onClick={handleIncrementQuantity}
 					className='rounded-md bg-secondaryBg p-2 shadow-md'
 				>
-					<svg
-						xmlns='http://www.w3.org/2000/svg'
-						fill='none'
-						viewBox='0 0 24 24'
-						stroke-width='1.5'
-						stroke='currentColor'
-						className='h-6 w-6'
-					>
-						<path
-							strokeLinecap='round'
-							strokeLinejoin='round'
-							d='M12 6v12m6-6H6'
-						/>
-					</svg>
+					<GrAdd />
 				</button>
 			</div>
 		</div>

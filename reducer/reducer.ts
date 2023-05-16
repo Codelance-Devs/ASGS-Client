@@ -11,33 +11,38 @@ const reducer = (state: AppState, action: AppActions) => {
 			const exists = state.cart.findIndex(
 				(item) => item.id === action.payload.id
 			);
-			if (exists !== -1) {
-				state.cart[exists].quantity! += 1;
-			} else {
+			if (exists === -1) {
 				const cartItem = { ...action.payload, quantity: 1 };
 				state.cart.push(cartItem);
 			}
 			localStorage.setItem('ASGS_CART', JSON.stringify(state.cart));
 			return { ...state };
 		}
-		case 'REMOVE_FROM_CART': {
-			const exists = state.cart.find(
+		case 'INCREMENT_ITEM_QUANTITY': {
+			const exists = state.cart.findIndex(
 				(item) => item.id === action.payload.id
 			);
-			let cartItem: ProductType;
-			let cart = [...state.cart];
-			if (exists) {
-				if (action.payload.quantity! <= 0) {
-					cart = cart.filter((item) => item.id !== action.payload.id);
-				} else {
-					cartItem = { ...exists, quantity: exists.quantity!-- };
-					cart = [...cart, cartItem];
-				}
-			} else {
-				cart = cart.filter((item) => item.id !== action.payload.id);
+			if (exists > -1) {
+				state.cart[exists].quantity! += 1;
 			}
-			localStorage.setItem('ASGS_CART', JSON.stringify(cart));
-			return { ...state, cart };
+			localStorage.setItem('ASGS_CART', JSON.stringify(state.cart));
+			return { ...state };
+		}
+		case 'DECREMENT_ITEM_QUANTITY': {
+			const exists = state.cart.findIndex(
+				(item) => item.id === action.payload.id
+			);
+			if (exists > -1) {
+				if (state.cart[exists].quantity == 1) {
+					state.cart = state.cart.filter(
+						(item) => item.id !== action.payload.id
+					);
+				} else {
+					state.cart[exists].quantity! -= 1;
+				}
+			}
+			localStorage.setItem('ASGS_CART', JSON.stringify(state.cart));
+			return { ...state };
 		}
 		case 'CLEAR_CART': {
 			const cart: ProductType[] = [];

@@ -1,16 +1,84 @@
 import DispatchContext from '@/context/DispatchContext';
+import AppContext from '@/context/AppContext';
 import Image from 'next/image';
 import React, { useContext } from 'react';
+import { GrSubtract, GrAdd } from 'react-icons/gr';
 
-interface Props {
+interface ProductCardProps {
 	product: ProductType;
 }
 
-const ProductCard: React.FC<Props> = ({ product }) => {
-	const dispatch = useContext<DispatchContextType>(DispatchContext);
+interface AddToCartButtonProps {
+	handleAddToCart: () => void;
+}
+
+interface IncrementDecrementButtonProps {
+	product: ProductType;
+	handleDecrementQuantity: () => void;
+	handleIncrementQuantity: () => void;
+}
+
+const AddToCartButton: React.FC<AddToCartButtonProps> = ({
+	handleAddToCart,
+}) => {
+	return (
+		<div
+			className='group relative inline-block pt-1 text-lg'
+			onClick={handleAddToCart}
+		>
+			<span className='relative z-10 block cursor-pointer overflow-hidden rounded-lg border-2 border-gray-900 px-5 py-3 font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out group-hover:text-primaryText'>
+				<button className='absolute inset-0 h-full w-full rounded-lg bg-gray-50 px-5 py-3'></button>
+				<span className='ease absolute left-0 -ml-2 h-48 w-48 origin-top-right -translate-x-full translate-y-12 -rotate-90 bg-secondaryBg transition-all duration-300 group-hover:-rotate-180'></span>
+				<span className='relative'>Add to Cart</span>
+			</span>
+			<span
+				className='absolute bottom-0 right-0 -mb-1 -mr-1 h-12 w-full rounded-lg bg-gray-900 transition-all duration-200 ease-linear group-hover:mb-0 group-hover:mr-0'
+				data-rounded='rounded-lg'
+			></span>
+		</div>
+	);
+};
+
+const IncrementDecrementButton: React.FC<IncrementDecrementButtonProps> = ({
+	product,
+	handleDecrementQuantity,
+	handleIncrementQuantity,
+}) => {
+	return (
+		<div className='my-5 flex w-full justify-center'>
+			<button
+				onClick={handleDecrementQuantity}
+				className='rounded-md bg-red-400 p-2 shadow-md'
+			>
+				<GrSubtract />
+			</button>
+			<span className='mx-5 rounded-md bg-white py-2 px-4 shadow-md'>
+				{product.quantity}
+			</span>
+			<button
+				onClick={handleIncrementQuantity}
+				className='rounded-md bg-secondaryBg p-2 shadow-md'
+			>
+				<GrAdd />
+			</button>
+		</div>
+	);
+};
+
+const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+	const dispatch = useContext(DispatchContext);
+	const { cart } = useContext(AppContext);
 
 	const handleAddToCart = () => {
 		dispatch({ type: 'ADD_TO_CART', payload: product });
+	};
+
+	const handleIncrementQuantity = () => {
+		dispatch({ type: 'INCREMENT_ITEM_QUANTITY', payload: product });
+	};
+
+	const handleDecrementQuantity = () => {
+		dispatch({ type: 'DECREMENT_ITEM_QUANTITY', payload: product });
 	};
 
 	return (
@@ -35,20 +103,15 @@ const ProductCard: React.FC<Props> = ({ product }) => {
 				</p>
 			</div>
 			<div>
-				<div
-					className='group relative inline-block pt-1 text-lg'
-					onClick={handleAddToCart}
-				>
-					<span className='relative z-10 block cursor-pointer overflow-hidden rounded-lg border-2 border-gray-900 px-5 py-3 font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out group-hover:text-primaryText'>
-						<button className='absolute inset-0 h-full w-full rounded-lg bg-gray-50 px-5 py-3'></button>
-						<span className='ease absolute left-0 -ml-2 h-48 w-48 origin-top-right -translate-x-full translate-y-12 -rotate-90 bg-secondaryBg transition-all duration-300 group-hover:-rotate-180'></span>
-						<span className='relative'>Add to Cart</span>
-					</span>
-					<span
-						className='absolute bottom-0 right-0 -mb-1 -mr-1 h-12 w-full rounded-lg bg-gray-900 transition-all duration-200 ease-linear group-hover:mb-0 group-hover:mr-0'
-						data-rounded='rounded-lg'
-					></span>
-				</div>
+				{cart.findIndex((item) => item.id === product.id) === -1 ? (
+					<AddToCartButton handleAddToCart={handleAddToCart} />
+				) : (
+					<IncrementDecrementButton
+						product={cart.find((item) => item.id === product.id)!}
+						handleDecrementQuantity={handleDecrementQuantity}
+						handleIncrementQuantity={handleIncrementQuantity}
+					/>
+				)}
 			</div>
 		</div>
 	);
