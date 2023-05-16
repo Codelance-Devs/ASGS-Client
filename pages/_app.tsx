@@ -11,6 +11,7 @@ export default function App({ Component, pageProps }: AppProps) {
 	const cart: ProductType[] = useMemo(() => {
 		if (typeof window !== 'undefined')
 			return JSON.parse(localStorage.getItem('ASGS_CART')!) ?? [];
+		else return [];
 	}, []);
 	const [state, dispatch] = useImmerReducer(reducer, { cart });
 	console.log(state);
