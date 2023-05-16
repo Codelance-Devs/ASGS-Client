@@ -49,7 +49,7 @@ function Header() {
 							Your cart contains {itemCount} items.
 						</p>
 						<div className='flex text-xl font-semibold'>
-							<p className=''>Cart Sub Total: {totalCost}</p>
+							<p className=''>Cart Sub Total: ₹{totalCost}</p>
 						</div>
 					</div>
 					<div className='flex items-center gap-4'>

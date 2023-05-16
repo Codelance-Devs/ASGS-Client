@@ -3,7 +3,6 @@
  */
 
 // Dependencies
-import React from 'react';
 
 const reducer = (state: AppState, action: AppActions) => {
 	switch (action.type) {
@@ -16,7 +15,7 @@ const reducer = (state: AppState, action: AppActions) => {
 				state.cart.push(cartItem);
 			}
 			localStorage.setItem('ASGS_CART', JSON.stringify(state.cart));
-			return { ...state };
+			break;
 		}
 		case 'INCREMENT_ITEM_QUANTITY': {
 			const exists = state.cart.findIndex(
@@ -28,7 +27,7 @@ const reducer = (state: AppState, action: AppActions) => {
 				console.log(state.cart[exists].quantity!);
 			}
 			localStorage.setItem('ASGS_CART', JSON.stringify(state.cart));
-			return { ...state };
+			break;
 		}
 		case 'DECREMENT_ITEM_QUANTITY': {
 			const exists = state.cart.findIndex(
@@ -44,15 +43,15 @@ const reducer = (state: AppState, action: AppActions) => {
 				}
 			}
 			localStorage.setItem('ASGS_CART', JSON.stringify(state.cart));
-			return { ...state };
+			break;
 		}
 		case 'CLEAR_CART': {
-			const cart: ProductType[] = [];
+			state.cart = [];
 			localStorage.removeItem('ASGS_CART');
-			return { ...state, cart };
+			break;
 		}
 		default: {
-			return { ...state };
+			break;
 		}
 	}
 };
