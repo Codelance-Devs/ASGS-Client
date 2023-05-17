@@ -17,7 +17,7 @@ const CartPage = () => {
 					<div>
 						<Header />
 					</div>
-					<div className='grid-rows-auto m-10 mx-auto grid w-full grid-cols-1 gap-8 px-10 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4'>
+					<div className='grid-rows-auto m-10 place-items-center mx-auto grid w-full grid-cols-1 gap-8 px-10 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4'>
 						{cart.length > 0 ? (
 							cart.map((product) => (
 								<Card key={product.id} product={product} />
