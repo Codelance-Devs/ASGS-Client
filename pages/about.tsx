@@ -1,8 +1,12 @@
+import Head from 'next/head';
 import Image from 'next/image';
 
 export default function about() {
 	return (
 		<>
+			<Head>
+				<title>About | ASGS</title>
+			</Head>
 			<section className='body-font text-gray-600'>
 				<div className='container mx-auto flex flex-col items-center px-5 py-24 md:flex-row'>
 					<div className='mb-16 flex flex-col items-center text-center md:mb-0 md:w-1/2 md:items-start md:pr-16 md:text-left lg:flex-grow lg:pr-24'>

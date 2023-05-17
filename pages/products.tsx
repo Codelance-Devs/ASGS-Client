@@ -30,7 +30,7 @@ export default function Products() {
 	return (
 		<>
 			<Head>
-				<title>Products | ASGS Supermarket</title>
+				<title>Products | ASGS</title>
 			</Head>
 			<div className='mt-[10%] items-center justify-center'>
 				<div className='xl:px-22 container mx-auto px-2 md:px-12'>
