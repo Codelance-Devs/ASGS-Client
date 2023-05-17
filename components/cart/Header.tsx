@@ -63,7 +63,7 @@ function Header() {
 				</p>
 			</div>
 			<div className='mt-10'>
-				<div className='flex justify-between items-center border-b border-neutral-400 pb-5'>
+				<div className='grid gird-cols-1 md:grid-cols-2 gap-4 place-items-center border-b border-neutral-400 pb-5'>
 					<div>
 						<h2 className='text-3xl text-primaryText font-bold '>
 							Cart Items
